@@ -101,12 +101,7 @@ export const TaskItem = function (pID, pName, pStart, pEnd, pClass, pLink, pMile
   let vDataObject = pDataObject;
   let vCompVal;
 
-  let parent = document.createTextNode(pParent).data;
-  if (parent && parent !== '0') {
-    parent = hashKey(parent).toString();
-  }
-
-  let vParent = parent;
+  let vParent;
 
   let vOpen = (vGroup == 2) ? 1 : parseInt(document.createTextNode(pOpen).data);
   let vDepend = new Array();
@@ -311,6 +306,13 @@ export const TaskItem = function (pID, pName, pStart, pEnd, pClass, pLink, pMile
   this.getListChildRow = function () { return vListChildRow; };
   this.getGroupSpan = function () { return vGroupSpan; };
   this.setName = function (pName) { vName = pName; };
+  this.setParent = function (pParent) {
+    let parent = document.createTextNode(pParent).data;
+    if (parent && parent !== '0') {
+      parent = hashKey(parent).toString();
+    }
+    vParent = parent
+  }
   this.setNotes = function (pNotes) { vNotes = pNotes; };
   this.setClass = function (pClass) { vClass = pClass; };
   this.setPlanClass = function (pPlanClass) { vPlanClass = pPlanClass; };

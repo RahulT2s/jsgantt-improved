@@ -3724,11 +3724,7 @@ exports.TaskItem = function (pID, pName, pStart, pEnd, pClass, pLink, pMile, pRe
     var vGroup = parseInt(document.createTextNode(pGroup).data);
     var vDataObject = pDataObject;
     var vCompVal;
-    var parent = document.createTextNode(pParent).data;
-    if (parent && parent !== '0') {
-        parent = general_utils_1.hashKey(parent).toString();
-    }
-    var vParent = parent;
+    var vParent;
     var vOpen = (vGroup == 2) ? 1 : parseInt(document.createTextNode(pOpen).data);
     var vDepend = new Array();
     var vDependType = new Array();
@@ -3987,6 +3983,13 @@ exports.TaskItem = function (pID, pName, pStart, pEnd, pClass, pLink, pMile, pRe
     this.getListChildRow = function () { return vListChildRow; };
     this.getGroupSpan = function () { return vGroupSpan; };
     this.setName = function (pName) { vName = pName; };
+    this.setParent = function (pParent) {
+        var parent = document.createTextNode(pParent).data;
+        if (parent && parent !== '0') {
+            parent = general_utils_1.hashKey(parent).toString();
+        }
+        vParent = parent;
+    };
     this.setNotes = function (pNotes) { vNotes = pNotes; };
     this.setClass = function (pClass) { vClass = pClass; };
     this.setPlanClass = function (pPlanClass) { vPlanClass = pPlanClass; };
